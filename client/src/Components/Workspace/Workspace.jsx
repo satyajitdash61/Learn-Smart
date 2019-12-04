@@ -7,15 +7,18 @@ class Workspace extends Component {
   componentDidMount() {
     axios
       .get("https://nut-case.s3.amazonaws.com/coursessc.json")
-      .then(response => {
-        console.log(response);
-      })
+      .then(response => response.json())
+      .then(data => 
+        this.setState({
+            Length : data
+        })
+        )
       .catch(err => {
         console.log(err);
       });
   }
   render() {
-    const Length = this.state;
+    const Length = this.state.Length;
     return (
       <div>
         <h1>hi</h1>
