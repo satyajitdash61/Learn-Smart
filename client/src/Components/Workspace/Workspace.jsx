@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
+import loadingGIF from '../../Images/preview.gif'
 class Workspace extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +22,7 @@ class Workspace extends Component {
   render() {
     const { isloaded, res } = this.state;
     if (!isloaded) {
-      return <div>Loading...</div>;
+    return <div>{loadingGIF}</div>;
     } else {
       return (
         <div>
