@@ -1,6 +1,7 @@
 import React, { Component } from "react";
-import axios from "axios";
-import loadingGIF from '../../Images/preview.gif'
+// import axios from "axios";
+import "./Workspace.css";
+import loadingGIF from "../../Images/preview.gif";
 class Workspace extends Component {
   constructor(props) {
     super(props);
@@ -22,15 +23,20 @@ class Workspace extends Component {
   render() {
     const { isloaded, res } = this.state;
     if (!isloaded) {
-    return <div>{loadingGIF}</div>;
+      return (
+        <div className="container-fluid beforeLoading">
+          <img src={loadingGIF} alt="" />
+        </div>
+      );
     } else {
       return (
         <div>
-          
-            {res.map(res => (
-              <p key={res["Course Id"]}>{res["Course Id"]}</p>
-            ))}
-        
+          {res.map(res => (
+            <React.Fragment>
+              <p>{res["Course Id"]}</p>
+              <p>{res["Course Name"]}</p>
+            </React.Fragment>
+          ))}
         </div>
       );
     }
