@@ -1,31 +1,40 @@
 import React, { Component } from "react";
 import axios from "axios";
 class Workspace extends Component {
-  state = {
-    Length: ""
-  };
+  constructor(props) {
+    super(props);
+    this.state = {
+      res: [],
+      isloaded: false
+    };
+  }
   componentDidMount() {
     axios
       .get("https://nut-case.s3.amazonaws.com/coursessc.json")
       .then(response => response.json())
-      .then(data => 
+      .then(data =>
         this.setState({
-            Length : data
+          res: data,
+          isloaded: true
         })
-        )
+      )
       .catch(err => {
         console.log(err);
       });
   }
   render() {
-    const Length = this.state.Length;
+    const { isloaded, res } = this.state;
+    if (!isloaded) {
+      return <div>Loading...</div>;
+    }
+    else{
     return (
       <div>
         <h1>hi</h1>
-        <p>Length : {Length}</p>
       </div>
     );
   }
+}
 }
 
 export default Workspace;
