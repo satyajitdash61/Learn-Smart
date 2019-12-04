@@ -9,32 +9,31 @@ class Workspace extends Component {
     };
   }
   componentDidMount() {
-    axios
-      .get("https://nut-case.s3.amazonaws.com/coursessc.json")
+    fetch("https://nut-case.s3.amazonaws.com/coursessc.json")
       .then(response => response.json())
-      .then(data =>
+      .then(value => {
         this.setState({
-          res: data,
-          isloaded: true
-        })
-      )
-      .catch(err => {
-        console.log(err);
+          isloaded: true,
+          res: value
+        });
       });
   }
   render() {
     const { isloaded, res } = this.state;
     if (!isloaded) {
       return <div>Loading...</div>;
+    } else {
+      return (
+        <div>
+          
+            {res.map(res => (
+              <p key={res["Course Id"]}>{res["Course Id"]}</p>
+            ))}
+        
+        </div>
+      );
     }
-    else{
-    return (
-      <div>
-        <h1>hi</h1>
-      </div>
-    );
   }
-}
 }
 
 export default Workspace;
