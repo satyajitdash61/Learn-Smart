@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-// import axios from "axios";
 import "./Workspace.css";
 import loadingGIF from "../../Images/preview.gif";
 import Card from "react-bootstrap/Card";
