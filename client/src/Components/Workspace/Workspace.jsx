@@ -15,6 +15,7 @@ class Workspace extends Component {
     this.state = {
       res: [],
       total: "",
+      finalres : "",
       field : "",
       isloaded: false
     };
@@ -25,10 +26,12 @@ class Workspace extends Component {
       .then(value => {
         this.setState({
           isloaded: true,
+          finalres:value,
           res: value,
           total: value.length
         });
       });
+      
   }
   handelChange = event =>{
     event.preventDefault();
@@ -39,19 +42,31 @@ class Workspace extends Component {
   }
   handleSubmit = event =>{
     const result = this.state.field;
-    const res = this.state.res;
+    console.log(result);
+    const res = this.state.finalres;
+    console.log("hi");
+    console.log(this.state.finalres);
+    
+    if(result===''){
+      this.setState({
+        isloaded : true,
+        res : this.state.finalres,
+        total : this.state.finalres.length
+      })
+    }
+    else{
     const updatedResult = res.filter((res)=>res["Child Subject"]===result)
-    console.log(updatedResult);
+    // console.log(updatedResult);
     this.setState({
       isloaded : true,
       res : updatedResult,
       total : updatedResult.length
     })
-    
+  }
     
   }
   render() {
-    const { isloaded, res, total, field} = this.state;
+    const { isloaded, finalres, res, total, field} = this.state;
     if (!isloaded) {
       return (
         <div className="container-fluid beforeLoading">
@@ -67,7 +82,7 @@ class Workspace extends Component {
             <Form inline>
               <FormControl
                 type="search"
-                placeholder="Search"
+                placeholder="Search Course"
                 name="field"
                 value={field}
                 onChange={this.handelChange}
@@ -78,7 +93,7 @@ class Workspace extends Component {
           </Navbar>
           <br />
           <div id="totalNO">
-            <p>Total : {total}</p>
+            <p>Courses Found : {total}</p>
           </div>
           {res.map(res => (
             <Card variant="mr-3">
