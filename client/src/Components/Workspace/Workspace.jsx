@@ -2,13 +2,19 @@ import React, { Component } from "react";
 // import axios from "axios";
 import "./Workspace.css";
 import loadingGIF from "../../Images/preview.gif";
-import Card from 'react-bootstrap/Card';
-import Button from 'react-bootstrap/Button';
+import Card from "react-bootstrap/Card";
+import Button from "react-bootstrap/Button";
+import Nav from "react-bootstrap/Nav";
+import Navbar from "react-bootstrap/Navbar";
+import Form from "react-bootstrap/Form";
+import FormControl from "react-bootstrap/FormControl";
+
 class Workspace extends Component {
   constructor(props) {
     super(props);
     this.state = {
       res: [],
+      total: "",
       isloaded: false
     };
   }
@@ -18,12 +24,13 @@ class Workspace extends Component {
       .then(value => {
         this.setState({
           isloaded: true,
-          res: value
+          res: value,
+          total: value.length
         });
       });
   }
   render() {
-    const { isloaded, res } = this.state;
+    const { isloaded, res, total } = this.state;
     if (!isloaded) {
       return (
         <div className="container-fluid beforeLoading">
@@ -32,18 +39,41 @@ class Workspace extends Component {
       );
     } else {
       return (
-        <div>
+        <div id="resultScreen">
+          <Navbar bg="dark" variant="dark">
+            <Navbar.Brand href="#home">Learn Smart</Navbar.Brand>
+            <Nav className="mr-auto"></Nav>
+            <Form inline>
+              <FormControl
+                type="search"
+                placeholder="Search"
+                className="mr-sm-2"
+              />
+              <Button variant="outline-info">Search</Button>
+            </Form>
+          </Navbar>
+          <br />
+          <div id="totalNO">
+            <p>Total : {total}</p>
+          </div>
           {res.map(res => (
-           <Card>
-           <Card.Header>{res["Provider"]}</Card.Header>
-           <Card.Body>
-             <Card.Title>Special title treatment</Card.Title>
-             <Card.Text>
-               With supporting text below as a natural lead-in to additional content.
-             </Card.Text>
-             <Button variant="primary">Go somewhere</Button>
-           </Card.Body>
-         </Card>
+            <Card variant="mr-3">
+              <Card.Header as="h3">{res["Course Name"]}</Card.Header>
+              <Card.Body>
+                <Card.Title>{res["Provider"]}</Card.Title>
+                <Card.Text>
+                  <p> University : {res["Universities/Institutions"]}</p>
+                  <p> Category : {res["Parent Subject"]} </p>
+                  <p>Session Starts On : {res["Next Session Date"]}</p>
+                </Card.Text>
+                <Button variant="outline-dark mr-3" href={res.Url}>
+                  Visit Site
+                </Button>
+                <Button variant="outline-dark" href={res["Video(Url)"]}>
+                  Watch Video
+                </Button>
+              </Card.Body>
+            </Card>
           ))}
         </div>
       );
