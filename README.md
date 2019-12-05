@@ -12,7 +12,7 @@ Steps to set up the envrionmentto run  application on local machine:
 
 # Author
 
-[Satyajit Dash](https://github.com/satyajitdash61)
+[Satyajit Dash](https://drive.google.com/file/d/12pmqHaX7uzrBowDirHEAGjuMXYX6TWeg/view?usp=sharing)
 
 # Technology Used
 
