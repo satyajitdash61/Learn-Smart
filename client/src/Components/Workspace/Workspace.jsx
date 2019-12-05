@@ -15,6 +15,7 @@ class Workspace extends Component {
     this.state = {
       res: [],
       total: "",
+      field : "",
       isloaded: false
     };
   }
@@ -29,8 +30,28 @@ class Workspace extends Component {
         });
       });
   }
+  handelChange = event =>{
+    event.preventDefault();
+    // const { name, value } = event.target;
+    this.setState({
+      field : event.target.value
+    });
+  }
+  handleSubmit = event =>{
+    const result = this.state.field;
+    const res = this.state.res;
+    const updatedResult = res.filter((res)=>res["Child Subject"]===result)
+    console.log(updatedResult);
+    this.setState({
+      isloaded : true,
+      res : updatedResult,
+      total : updatedResult.length
+    })
+    
+    
+  }
   render() {
-    const { isloaded, res, total } = this.state;
+    const { isloaded, res, total, field} = this.state;
     if (!isloaded) {
       return (
         <div className="container-fluid beforeLoading">
@@ -47,9 +68,12 @@ class Workspace extends Component {
               <FormControl
                 type="search"
                 placeholder="Search"
+                name="field"
+                value={field}
+                onChange={this.handelChange}
                 className="mr-sm-2"
               />
-              <Button variant="outline-info">Search</Button>
+              <Button variant="outline-info" onClick={this.handleSubmit}>Search</Button>
             </Form>
           </Navbar>
           <br />
