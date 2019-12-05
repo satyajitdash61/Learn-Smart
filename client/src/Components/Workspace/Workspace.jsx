@@ -38,9 +38,12 @@ class Workspace extends Component {
   componentDidMount() {
     // fetching the endpoint json
     fetch("https://nut-case.s3.amazonaws.com/coursessc.json")
+    // converting to json
       .then(response => response.json())
       .then(value => {
+        // updating the state
         this.setState({
+          // updating the objects
           isloaded: true,
           finalres:value,
           res: value,
@@ -49,21 +52,23 @@ class Workspace extends Component {
       });
       
   }
+  // handling the onchange event
   handelChange = event =>{
+    // preventing the link from opening the url
     event.preventDefault();
-    // const { name, value } = event.target;
+    // updating the state and object
     this.setState({
       field : event.target.value
     });
   }
+  // hadling the onclick of search button event
   handleSubmit = event =>{
+    // assigning the state values to variables
     const result = this.state.field;
-    console.log(result);
     const res = this.state.finalres;
-    console.log("hi");
-    console.log(this.state.finalres);
-    
+    // if user gives a null search input
     if(result===''){
+      // updating the state 
       this.setState({
         isloaded : true,
         res : this.state.finalres,
@@ -71,16 +76,17 @@ class Workspace extends Component {
       })
     }
     else{
-    const updatedResult = res.filter((res)=>res["Child Subject"]===result)
-    // console.log(updatedResult);
+      // if user gives any valid input
+    const updatedResult = res.filter((res)=>res["Child Subject"]===result);
+    // updating the state
     this.setState({
       isloaded : true,
       res : updatedResult,
       total : updatedResult.length
     })
+  }    
   }
-    
-  }
+  // rendering the output
   render() {
     const { isloaded, finalres, res, total, field} = this.state;
     if (!isloaded) {
