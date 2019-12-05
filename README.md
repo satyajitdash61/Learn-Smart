@@ -22,7 +22,9 @@ React
 
 https://learnsmart-webapp.herokuapp.com/
 
-[Click here to watch the video](https://drive.google.com/drive/u/0/my-drive)
+# Video
+
+https://drive.google.com/file/d/12pmqHaX7uzrBowDirHEAGjuMXYX6TWeg/view?usp=sharing
 
 # Screenshots
 
