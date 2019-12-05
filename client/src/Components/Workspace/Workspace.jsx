@@ -108,6 +108,7 @@ class Workspace extends Component {
             <Navbar.Brand href="#home">Learn Smart</Navbar.Brand>
             <Nav className="mr-auto"></Nav>
             <Form inline>
+              {/* input box */}
               <FormControl
                 type="search"
                 placeholder="Search Course"
@@ -116,14 +117,18 @@ class Workspace extends Component {
                 onChange={this.handelChange}
                 className="mr-sm-2"
               />
+              {/* search button */}
               <Button variant="outline-info" onClick={this.handleSubmit}>Search</Button>
             </Form>
           </Navbar>
           <br />
           <div id="totalNO">
+            {/* total courses found */}
             <p>Courses Found : {total}</p>
           </div>
+          {/* mapping the result */}
           {res.map(res => (
+            // showing in card
             <Card variant="mr-3">
               <Card.Header as="h3">{res["Course Name"]}</Card.Header>
               <Card.Body>
