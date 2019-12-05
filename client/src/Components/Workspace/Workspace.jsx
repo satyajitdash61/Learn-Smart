@@ -17,10 +17,16 @@ import Form from "react-bootstrap/Form";
 // adding FormControl from bootstrap FormControl
 import FormControl from "react-bootstrap/FormControl";
 
+// creating class workspace extending from Component
 class Workspace extends Component {
+
+  // creating constructor
   constructor(props) {
+    // calling parent constructor
     super(props);
+    // creating state
     this.state = {
+      // adding objects
       res: [],
       total: "",
       finalres : "",
