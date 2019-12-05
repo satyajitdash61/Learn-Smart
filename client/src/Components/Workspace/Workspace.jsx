@@ -1,11 +1,20 @@
+// importing React and Component from react
 import React, { Component } from "react";
+// adding css file
 import "./Workspace.css";
+// adding loading time gif
 import loadingGIF from "../../Images/preview.gif";
+// adding card from bootstrap card
 import Card from "react-bootstrap/Card";
+// adding Button from bootstrap Button
 import Button from "react-bootstrap/Button";
+// adding Nav from bootstrap Nav
 import Nav from "react-bootstrap/Nav";
+// adding Navbar from bootstrap Navbar
 import Navbar from "react-bootstrap/Navbar";
+// adding Form from bootstrap Form
 import Form from "react-bootstrap/Form";
+// adding FormControl from bootstrap FormControl
 import FormControl from "react-bootstrap/FormControl";
 
 class Workspace extends Component {
