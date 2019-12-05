@@ -22,6 +22,8 @@ React
 
 https://learnsmart-webapp.herokuapp.com/
 
+[Click here to watch the video](https://drive.google.com/drive/u/0/my-drive)
+
 # Screenshots
 
 ![Capture16](https://user-images.githubusercontent.com/32846765/70266683-f9c8c480-17c2-11ea-9c2e-66744ec58695.PNG)
