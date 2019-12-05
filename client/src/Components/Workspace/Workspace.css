@@ -10,3 +10,6 @@
     align-items: center;
     /* background-color: aquamarine; */
 }
+.border{
+    border-bottom: 1px solid black;
+}

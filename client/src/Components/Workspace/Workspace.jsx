@@ -2,6 +2,8 @@ import React, { Component } from "react";
 // import axios from "axios";
 import "./Workspace.css";
 import loadingGIF from "../../Images/preview.gif";
+import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 class Workspace extends Component {
   constructor(props) {
     super(props);
@@ -32,10 +34,16 @@ class Workspace extends Component {
       return (
         <div>
           {res.map(res => (
-            <React.Fragment>
-              <p>{res["Course Id"]}</p>
-              <p>{res["Course Name"]}</p>
-            </React.Fragment>
+           <Card>
+           <Card.Header>{res["Provider"]}</Card.Header>
+           <Card.Body>
+             <Card.Title>Special title treatment</Card.Title>
+             <Card.Text>
+               With supporting text below as a natural lead-in to additional content.
+             </Card.Text>
+             <Button variant="primary">Go somewhere</Button>
+           </Card.Body>
+         </Card>
           ))}
         </div>
       );
