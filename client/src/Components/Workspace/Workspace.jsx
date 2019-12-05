@@ -102,8 +102,9 @@ class Workspace extends Component {
       // when the page is loaded
       return (
         <div id="resultScreen">
-          {/* nav bar */}
+          {/* navigation bar */}
           <Navbar bg="dark" variant="dark">
+            {/* brand name */}
             <Navbar.Brand href="#home">Learn Smart</Navbar.Brand>
             <Nav className="mr-auto"></Nav>
             <Form inline>
