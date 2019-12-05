@@ -130,17 +130,22 @@ class Workspace extends Component {
           {res.map(res => (
             // showing in card
             <Card variant="mr-3">
+              {/* showing the course name */}
               <Card.Header as="h3">{res["Course Name"]}</Card.Header>
               <Card.Body>
+                {/* showing the provider */}
                 <Card.Title>{res["Provider"]}</Card.Title>
+                {/* showing more information */}
                 <Card.Text>
                   <p> University : {res["Universities/Institutions"]}</p>
                   <p> Category : {res["Parent Subject"]} </p>
                   <p>Session Starts On : {res["Next Session Date"]}</p>
                 </Card.Text>
+                {/* button for visiting the site */}
                 <Button variant="outline-dark mr-3" href={res.Url}>
                   Visit Site
                 </Button>
+                {/* button for visiting the Youtube link */}
                 <Button variant="outline-dark" href={res["Video(Url)"]}>
                   Watch Video
                 </Button>
@@ -152,5 +157,5 @@ class Workspace extends Component {
     }
   }
 }
-
+// exporting 
 export default Workspace;
