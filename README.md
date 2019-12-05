@@ -2,6 +2,14 @@
 
 This is a web application for searching online courses. User have to type the perticular course and then by pressing the search button, the required output will be shown on the screen.
 
+This application is hosted on heroku server and the link is being shared in preview section. In order to run the aplication in local machine, first the user has to clone the repository and then setup the complete environment to run this application.
+Steps to set up the envrionmentto run  application on local machine:
+
+1. Copy the repository path in cmd
+2. cd client
+3. npm-start
+4. run in browser: 127.0.0.1:3000
+
 # Author
 
 [Satyajit Dash](https://github.com/satyajitdash61)
