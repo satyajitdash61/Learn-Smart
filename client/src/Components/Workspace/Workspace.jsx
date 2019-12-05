@@ -88,16 +88,21 @@ class Workspace extends Component {
   }
   // rendering the output
   render() {
+    // calling the state objects
     const { isloaded, finalres, res, total, field} = this.state;
+    // while the page is loading
     if (!isloaded) {
       return (
         <div className="container-fluid beforeLoading">
+          {/* loading the gif file */}
           <img src={loadingGIF} alt="" />
         </div>
       );
     } else {
+      // when the page is loaded
       return (
         <div id="resultScreen">
+          {/* nav bar */}
           <Navbar bg="dark" variant="dark">
             <Navbar.Brand href="#home">Learn Smart</Navbar.Brand>
             <Nav className="mr-auto"></Nav>
