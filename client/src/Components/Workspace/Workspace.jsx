@@ -34,7 +34,9 @@ class Workspace extends Component {
       isloaded: false
     };
   }
+  // during loading of dom and updating the state
   componentDidMount() {
+    // fetching the endpoint json
     fetch("https://nut-case.s3.amazonaws.com/coursessc.json")
       .then(response => response.json())
       .then(value => {
