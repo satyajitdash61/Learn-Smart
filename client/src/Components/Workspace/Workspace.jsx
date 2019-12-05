@@ -1,23 +1,13 @@
 // importing React and Component from react
 import React, { Component } from "react";
-// adding css file
 import "./Workspace.css";
-// adding loading time gif
 import loadingGIF from "../../Images/preview.gif";
-// adding card from bootstrap card
 import Card from "react-bootstrap/Card";
-// adding Button from bootstrap Button
 import Button from "react-bootstrap/Button";
-// adding Nav from bootstrap Nav
 import Nav from "react-bootstrap/Nav";
-// adding Navbar from bootstrap Navbar
 import Navbar from "react-bootstrap/Navbar";
-// adding Form from bootstrap Form
 import Form from "react-bootstrap/Form";
-// adding FormControl from bootstrap FormControl
 import FormControl from "react-bootstrap/FormControl";
-
-// creating class workspace extending from Component
 class Workspace extends Component {
 
   // creating constructor
@@ -26,7 +16,6 @@ class Workspace extends Component {
     super(props);
     // creating state
     this.state = {
-      // adding objects
       res: [],
       total: "",
       finalres : "",
@@ -34,16 +23,12 @@ class Workspace extends Component {
       isloaded: false
     };
   }
-  // during loading of dom and updating the state
+  // during loading of dom and updating the state according to the json values
   componentDidMount() {
-    // fetching the endpoint json
     fetch("https://nut-case.s3.amazonaws.com/coursessc.json")
-    // converting to json
       .then(response => response.json())
       .then(value => {
-        // updating the state
         this.setState({
-          // updating the objects
           isloaded: true,
           finalres:value,
           res: value,
@@ -54,21 +39,17 @@ class Workspace extends Component {
   }
   // handling the onchange event
   handelChange = event =>{
-    // preventing the link from opening the url
     event.preventDefault();
-    // updating the state and object
     this.setState({
       field : event.target.value
     });
   }
   // hadling the onclick of search button event
   handleSubmit = event =>{
-    // assigning the state values to variables
     const result = this.state.field;
     const res = this.state.finalres;
-    // if user gives a null search input
+    // if user gives a null input
     if(result===''){
-      // updating the state 
       this.setState({
         isloaded : true,
         res : this.state.finalres,
@@ -78,7 +59,6 @@ class Workspace extends Component {
     else{
       // if user gives any valid input
     const updatedResult = res.filter((res)=>res["Child Subject"]===result);
-    // updating the state
     this.setState({
       isloaded : true,
       res : updatedResult,
@@ -88,13 +68,11 @@ class Workspace extends Component {
   }
   // rendering the output
   render() {
-    // calling the state objects
     const { isloaded, finalres, res, total, field} = this.state;
     // while the page is loading
     if (!isloaded) {
       return (
         <div className="container-fluid beforeLoading">
-          {/* loading the gif file */}
           <img src={loadingGIF} alt="" />
         </div>
       );
@@ -102,13 +80,10 @@ class Workspace extends Component {
       // when the page is loaded
       return (
         <div id="resultScreen">
-          {/* navigation bar */}
           <Navbar bg="dark" variant="dark">
-            {/* brand name */}
             <Navbar.Brand href="#home">Learn Smart</Navbar.Brand>
             <Nav className="mr-auto"></Nav>
             <Form inline>
-              {/* input box */}
               <FormControl
                 type="search"
                 placeholder="Search Course"
@@ -117,35 +92,27 @@ class Workspace extends Component {
                 onChange={this.handelChange}
                 className="mr-sm-2"
               />
-              {/* search button */}
               <Button variant="outline-info" onClick={this.handleSubmit}>Search</Button>
             </Form>
           </Navbar>
           <br />
           <div id="totalNO">
-            {/* total courses found */}
             <p>Courses Found : {total}</p>
           </div>
-          {/* mapping the result */}
           {res.map(res => (
             // showing in card
             <Card variant="mr-3">
-              {/* showing the course name */}
               <Card.Header as="h3">{res["Course Name"]}</Card.Header>
               <Card.Body>
-                {/* showing the provider */}
                 <Card.Title>{res["Provider"]}</Card.Title>
-                {/* showing more information */}
                 <Card.Text>
                   <p> University : {res["Universities/Institutions"]}</p>
                   <p> Category : {res["Parent Subject"]} </p>
                   <p>Session Starts On : {res["Next Session Date"]}</p>
                 </Card.Text>
-                {/* button for visiting the site */}
                 <Button variant="outline-dark mr-3" href={res.Url}>
                   Visit Site
                 </Button>
-                {/* button for visiting the Youtube link */}
                 <Button variant="outline-dark" href={res["Video(Url)"]}>
                   Watch Video
                 </Button>
@@ -157,5 +124,4 @@ class Workspace extends Component {
     }
   }
 }
-// exporting 
 export default Workspace;
